@@ -19,7 +19,7 @@ jobs:
       with:
         repo_token: ${{secrets.TOKEN}}
         automatic_release_tag: "latest"
-        prerelease: false:
+        prerelease: false
         title: "Caddy2 latest"
         files: |
           caddy
