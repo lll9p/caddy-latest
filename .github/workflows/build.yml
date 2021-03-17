@@ -13,3 +13,22 @@ jobs:
         go-version: '^1.16.2'
     - run: |
         bash ./build.sh
+    - name: Create Release
+      uses: actions/create-release@master
+      id: create_release
+      env:
+        GITHUB_TOKEN: ${{secrets.TOKEN}}
+      with:
+        tag_name: latest
+        release_name: Release of latest
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@master
+      env:
+        GITHUB_TOKEN: ${{secrets.TOKEN}}
+      with:
+        upload_url: ${{steps.create_release.outputs.upload_url}}
+        asset_path: ./caddy
+        asset_name: caddy
