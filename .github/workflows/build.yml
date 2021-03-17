@@ -14,22 +14,12 @@ jobs:
     - run: |
         bash ./build.sh
     - name: Create Release
-      uses: actions/create-release@master
+      uses: "marvinpinto/action-automatic-releases@latest"
       id: create_release
-      env:
-        GITHUB_TOKEN: ${{secrets.TOKEN}}
       with:
-        tag_name: latest
-        release_name: latest
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@master
-      env:
-        GITHUB_TOKEN: ${{secrets.TOKEN}}
-      with:
-        upload_url: ${{steps.create_release.outputs.upload_url}}
-        asset_path: ./caddy
-        asset_name: caddy
-        asset_content_type: application/octet-stream
+        repo_token: ${{secrets.TOKEN}}
+        automatic_release_tag: "latest"
+        prerelease: false:
+        title: "Caddy2 latest"
+        files: |
+          caddy
