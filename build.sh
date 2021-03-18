@@ -6,4 +6,5 @@ xcaddy build \
     --with github.com/mholt/caddy-webdav \
     --with github.com/caddy-dns/dnspod \
     --with github.com/caddy-dns/cloudflare \
+    --with github.com/caddy-dns/alidns \
     --with github.com/caddyserver/format-encoder
